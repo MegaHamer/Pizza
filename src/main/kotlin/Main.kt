@@ -3,11 +3,12 @@ import kotlin.system.exitProcess
 fun main() {
     val pizzaMoscow = PizzaMoscow(200.0,300.0,270.0,350.0)
     val pizzaPiter = PizzaPeter(250.50,320.99, 290.30,370.60)
+    val pizzaOmsk = PizzaOmsk(223.55,280.3,270.5,360.9)
     var currentPizza:PizzaCity
 
     while (true){
         println("Выберите город:")
-        println("1. Москва\n2. Санкт- Петербург\n\n0. Выход из программы")
+        println("1. Москва\n2. Санкт- Петербург\n3. Омск\n\n0. Выход из программы")
         currentPizza = when (readln()){
             "1"->{
                 pizzaMoscow
@@ -15,6 +16,7 @@ fun main() {
             "2"->{
                 pizzaPiter
             }
+            "3"->pizzaOmsk
             "0"->break
             else-> {
                 println("ERROR")
@@ -53,7 +55,6 @@ private fun selectPizza(currentPizza: PizzaCity) {
 
         "0" -> {
             currentPizza.showStatistics()
-            if (currentPizza is Drinks) currentPizza.drinkStatistics()
         }
         else -> {
             println("ERROR")
@@ -64,7 +65,7 @@ private fun selectPizza(currentPizza: PizzaCity) {
 
 fun selectAddService(currentPizza:PizzaCity){
     when (currentPizza){
-        is CheckPhoto -> currentPizza.showCheckPhoto()
+        is PizzaMoscow -> currentPizza.showCheckPhoto()
         /*is Drinks-> currentPizza.drinkSell()*/
     }
 }

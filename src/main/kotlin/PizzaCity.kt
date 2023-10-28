@@ -22,18 +22,22 @@ abstract class PizzaCity(
                  sicilianPizzaCount * sicilianPizzaPrice +
                  tyroleanPizzaCount * tyroleanPizzaPrice
          println("Всего заработано денег на пицце: $money")
-         var service:Double=0.0
+         var serviceSum:Double=0.0
          val pizzaCount = (neapolitanPizzaCount + romanPizzaCount + sicilianPizzaCount + tyroleanPizzaCount).toDouble()
-         when (this){
-             is Drinks -> {
-                 service = drinkPrice * drinkCount
-                 println("Приобрели ${drinkCount}(${round(drinkCount/pizzaCount*100.0)}%) напитков по ${drinkPrice}. Итого: $service")
-             }
-             is CheckPhoto -> {
-                 service = checkPhotoDiscount * checkPhotoCount * -1
-                 println("Чек предоставили ${checkPhotoCount}(${round(checkPhotoCount/pizzaCount*100.0)}%) раз со скидкой ${checkPhotoDiscount}. Итого: ${-service}")
-             }
+         if (this is Drinks){
+                 serviceSum += drinkPrice * drinkCount
+                 println("\nПриобрели ${drinkCount}(${round(drinkCount/pizzaCount*100.0)}%) напитков по ${drinkPrice}. Итого: ${drinkPrice * drinkCount}")
+             drinkStatistics()
          }
-         println("Всего заработано с учетом сервиса: ${money+service}")
+         if (this is Sauce){
+             serviceSum += sauceCount[0]*sauceValue[0]+sauceCount[1]*sauceValue[1]
+             println()
+             sauceStatistics()
+         }
+         if (this is CheckPhoto){
+                 serviceSum += checkPhotoDiscount * checkPhotoCount * -1
+                 println("\nЧек предоставили ${checkPhotoCount}(${round(checkPhotoCount/pizzaCount*100.0)}%) раз со скидкой ${checkPhotoDiscount}. Итого: ${checkPhotoDiscount * checkPhotoCount}")
+         }
+         println("\nВсего заработано с учетом сервиса: ${money+serviceSum}\n\n")
      }
 }

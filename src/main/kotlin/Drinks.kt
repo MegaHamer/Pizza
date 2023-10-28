@@ -1,7 +1,7 @@
 interface Drinks {
     var drinkCount:Int
     var drinkPrice:Double
-    fun drinkSell():Boolean
+    fun drinkSell(PizzaDrinkCount:Int):Int
     var neapolitanPizzaDrinkCount:Int
     var romanPizzaDrinkCount:Int
     var sicilianPizzaDrinkCount:Int
