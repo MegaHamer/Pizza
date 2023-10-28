@@ -1,4 +1,6 @@
- abstract class PizzaCity(
+import java.lang.Math.round
+
+abstract class PizzaCity(
      val neapolitanPizzaPrice:Double, val romanPizzaPrice:Double,
      val sicilianPizzaPrice:Double, val tyroleanPizzaPrice:Double
  ) {
@@ -25,11 +27,11 @@
          when (this){
              is Drinks -> {
                  service = drinkPrice * drinkCount
-                 println("Приобрели ${drinkCount}(${drinkCount/pizzaCount*100.0}%) напитков по ${drinkPrice}. Итого: $service")
+                 println("Приобрели ${drinkCount}(${round(drinkCount/pizzaCount*100.0)}%) напитков по ${drinkPrice}. Итого: $service")
              }
              is CheckPhoto -> {
                  service = checkPhotoDiscount * checkPhotoCount * -1
-                 println("Чек предоставили ${checkPhotoCount}(${checkPhotoCount/pizzaCount*100.0}%) раз со скидкой ${checkPhotoDiscount}. Итого: ${-service}")
+                 println("Чек предоставили ${checkPhotoCount}(${round(checkPhotoCount/pizzaCount*100.0)}%) раз со скидкой ${checkPhotoDiscount}. Итого: ${-service}")
              }
          }
          println("Всего заработано с учетом сервиса: ${money+service}")

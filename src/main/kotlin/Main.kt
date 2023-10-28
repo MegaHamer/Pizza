@@ -51,7 +51,10 @@ private fun selectPizza(currentPizza: PizzaCity) {
             selectAddService(currentPizza)
         }
 
-        "0" -> currentPizza.showStatistics()
+        "0" -> {
+            currentPizza.showStatistics()
+            if (currentPizza is Drinks) currentPizza.drinkStatistics()
+        }
         else -> {
             println("ERROR")
             exitProcess(1)
@@ -62,6 +65,6 @@ private fun selectPizza(currentPizza: PizzaCity) {
 fun selectAddService(currentPizza:PizzaCity){
     when (currentPizza){
         is CheckPhoto -> currentPizza.showCheckPhoto()
-        is Drinks-> currentPizza.drinkSell()
+        /*is Drinks-> currentPizza.drinkSell()*/
     }
 }
