@@ -5,10 +5,15 @@ open class PizzaPeter(
     neapolitanPizzaPrice, romanPizzaPrice,
     sicilianPizzaPrice, tyroleanPizzaPrice
 ),Drinks{
+    override var drinkCount: Int = 0
+    override var drinkPrice: Double = 120.0
     override fun drinkSell() {
         println("Будете кофе?")
         println("1. Да\n2. Нет")
-        if (readln()=="1") println("С вас 200 руб")
+        if (readln()=="1") {
+            println("С вас ${drinkPrice} руб")
+            drinkCount++
+        }
     }
     override fun romanPizzaSale() {
         romanPizzaCount++

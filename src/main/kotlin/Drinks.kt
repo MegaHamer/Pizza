@@ -1,5 +1,5 @@
 interface Drinks {
-    /*var drinkMenu:MutableMap<String,Double>
-    var drinkCount:MutableMap<String,Double>*/
+    var drinkCount:Int
+    var drinkPrice:Double
     fun drinkSell()
 }

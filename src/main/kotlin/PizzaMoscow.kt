@@ -5,10 +5,15 @@ open class PizzaMoscow(
     neapolitanPizzaPrice, romanPizzaPrice,
     sicilianPizzaPrice, tyroleanPizzaPrice
 ),CheckPhoto{
+    override var checkPhotoDiscount: Double = 50.0
+    override var checkPhotoCount: Int=0
     override fun showCheckPhoto() {
         println("У вас есть фотографии чека?")
         println("1. Да\n2. Нет")
-        if (readln()=="1") println("Cкидка 50 руб")
+        if (readln()=="1") {
+            println("Cкидка ${checkPhotoDiscount}")
+            checkPhotoCount++
+        }
     }
     override fun romanPizzaSale() {
         romanPizzaCount++
