@@ -19,6 +19,18 @@
                  romanPizzaCount * romanPizzaPrice +
                  sicilianPizzaCount * sicilianPizzaPrice +
                  tyroleanPizzaCount * tyroleanPizzaPrice
-         println("Всего заработано денег: $money")
+         println("Всего заработано денег на пицце: $money")
+         var service:Double=0.0
+         when (this){
+             is Drinks -> {
+                 service = drinkPrice * drinkCount
+                 println("Приобрели ${drinkCount} напитков по ${drinkPrice}. Итого: $service")
+             }
+             is CheckPhoto -> {
+                 service = checkPhotoDiscount * checkPhotoCount * -1
+                 println("Чек предоставили ${checkPhotoCount} раз со скидкой ${checkPhotoDiscount}. Итого: ${-service}")
+             }
+         }
+         println("Всего заработано с учетом сервиса: ${money+service}")
      }
 }
